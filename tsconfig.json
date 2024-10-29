@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // ou uma versão que você preferir
+    "module": "esnext", // ou "commonjs"
+    "jsx": "react-jsx", // use "react" se estiver com React 17 ou anterior
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "cypress/**/*" // Inclua seus arquivos de testes
+  ]
+}
