@@ -1,9 +1,11 @@
+import Calculator from "./components/calculator";
 import TodoApp from "./components/todo";
 
 function App() {
   return (
-    <div className="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div className="bg-background text-foreground min-h-screen flex flex-col md:flex-row  items-start h-screen justify-center p-4 gap-4">
       <TodoApp />
+      <Calculator />
     </div>
   );
 }
