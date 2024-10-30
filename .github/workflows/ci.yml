@@ -1,0 +1,44 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout o código do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js (ajuste a versão conforme necessário)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Step 3: Instala as dependências
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build a aplicação com Vite
+      - name: Build application
+        run: npm run build
+
+      # Step 5: Start server for Cypress tests
+      - name: Start server
+        run: npm run preview &
+        env:
+          CYPRESS_BASE_URL: "http://localhost:4173" # URL padrão do Vite para modo preview
+
+      # Step 6: Executa os testes com o Cypress
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          config-file: cypress.config.js
+          wait-on: "http://localhost:4173"
+          start: npm run preview
