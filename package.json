@@ -15,7 +15,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "start": "vite preview",
     "cypress": "cypress open",
     "cypress:component": "cypress open --component",
     "cypress:e2e": "cypress open --e2e",
